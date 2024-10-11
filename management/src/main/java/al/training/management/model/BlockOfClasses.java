@@ -8,26 +8,22 @@ import lombok.Setter;
 
 import java.util.List;
 
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class User {
+public class BlockOfClasses {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
+    private String name;
 
+    @ManyToOne
+    @JoinColumn(name = "course_id", referencedColumnName = "id")
+    private Course course;
 
-    @ManyToMany(mappedBy = "user")
-    private List<Course> courses;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Notification> notifications;
+    @OneToMany(mappedBy = "blockOfClasses", cascade = CascadeType.ALL)
+    private List<Classes> classesList;
 }
