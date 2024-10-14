@@ -7,12 +7,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Classes {
+public class Klas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,4 +25,10 @@ public class Classes {
     @ManyToOne
     @JoinColumn(name = "block_id", referencedColumnName = "id")
     private BlockOfClasses blockOfClasses;
+
+    public Klas(String subject, Date date, BlockOfClasses block) {
+        this.subject = subject;
+        this.date = date.toString();
+        this.blockOfClasses = block;
+    }
 }

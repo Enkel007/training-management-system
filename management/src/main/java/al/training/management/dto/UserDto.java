@@ -1,5 +1,8 @@
 package al.training.management.dto;
 
+import lombok.Data;
+
+@Data
 public class UserDto {
     private Long id;
     private String firstName;

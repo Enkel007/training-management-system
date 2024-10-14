@@ -11,7 +11,6 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class BlockOfClasses {
     @Id
@@ -25,5 +24,9 @@ public class BlockOfClasses {
     private Course course;
 
     @OneToMany(mappedBy = "blockOfClasses", cascade = CascadeType.ALL)
-    private List<Classes> classesList;
+    private List<Klas> classesList;
+
+    public BlockOfClasses(String name) {
+        this.name = name;
+    }
 }

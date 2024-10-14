@@ -25,7 +25,7 @@ public class User {
     private String password;
 
 
-    @ManyToMany(mappedBy = "user")
+    @ManyToMany(mappedBy = "users")
     private List<Course> courses;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

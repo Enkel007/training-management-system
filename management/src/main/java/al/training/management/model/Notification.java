@@ -24,5 +24,5 @@ public class Notification {
 
     @ManyToOne
     @JoinColumn(name = "class_id", referencedColumnName = "id")
-    private Classes classes;
+    private Klas classes;
 }

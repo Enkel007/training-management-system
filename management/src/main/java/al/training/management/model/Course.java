@@ -30,4 +30,8 @@ public class Course {
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private List<BlockOfClasses> blocksOfClasses;
+
+    public Course(String name) {
+        this.name = name;
+    }
 }
