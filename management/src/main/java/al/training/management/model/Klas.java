@@ -1,6 +1,5 @@
 package al.training.management.model;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,17 +17,17 @@ public class Klas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
     private String subject;
-    private String date;
-
+    private Date date;
+    
     @ManyToOne
     @JoinColumn(name = "block_id", referencedColumnName = "id")
     private BlockOfClasses blockOfClasses;
-
+    
     public Klas(String subject, Date date, BlockOfClasses block) {
         this.subject = subject;
-        this.date = date.toString();
+        this.date = date;
         this.blockOfClasses = block;
     }
 }

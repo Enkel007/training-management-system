@@ -1,11 +1,13 @@
 package al.training.management.request;
 
 import al.training.management.model.BlockOfClasses;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 
-@Data
+@Getter
+@Setter
 public class UpdateClassRequest {
     private String subject;
     private Date date;
