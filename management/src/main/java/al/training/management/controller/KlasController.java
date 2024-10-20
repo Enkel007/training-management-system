@@ -23,7 +23,7 @@ public class KlasController {
     private final IKlasService klasService;
     
     @GetMapping("/all")
-    public ResponseEntity<ApiResponse> getAllProducts() {
+    public ResponseEntity<ApiResponse> getAllClasses() {
         List<Klas> classes = klasService.getAllClasses();
         List<ClassDto> convertedClasses = klasService.getConvertedClasses(classes);
         return ResponseEntity.ok(new ApiResponse("Success!", convertedClasses));

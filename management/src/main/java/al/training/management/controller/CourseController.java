@@ -73,7 +73,7 @@ public class CourseController {
     }
 
     @GetMapping("/courses/{name}/courses")
-    public ResponseEntity<ApiResponse> getProductByName(@PathVariable String name){
+    public ResponseEntity<ApiResponse> getCourseByName(@PathVariable String name){
         try {
             List<Course> courses = courseService.getCourseByName(name);
             if (courses.isEmpty()) {
