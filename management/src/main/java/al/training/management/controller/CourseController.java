@@ -23,7 +23,7 @@ public class CourseController {
     private final ICourseService courseService;
 
     @GetMapping("/all")
-    public ResponseEntity<ApiResponse> getAllProducts() {
+    public ResponseEntity<ApiResponse> getAllCourses() {
         List<Course> courses = courseService.getAllCourses();
         List<CourseDto> convertedCourses = courseService.getConvertedCourses(courses);
         return  ResponseEntity.ok(new ApiResponse("success", convertedCourses));

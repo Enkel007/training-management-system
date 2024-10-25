@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,6 +19,11 @@ public class Notification {
 
     private String subject;
     private String content;
+
+    private boolean read;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date timeStamp;
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
