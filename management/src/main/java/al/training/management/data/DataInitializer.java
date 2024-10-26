@@ -25,15 +25,16 @@ public class DataInitializer implements ApplicationListener<ApplicationReadyEven
     @Override
     public void onApplicationEvent(ApplicationReadyEvent event) {
         Set<String> defaultRoles =  Set.of("ROLE_ADMIN", "ROLE_STUDENT", "ROLE_TEACHER");
-        createDefaultUserIfNotExits();
         createDefaultRoleIfNotExits(defaultRoles);
+        createDefaultStudentIfNotExits();
+        createDefaultTeacherIfNotExits();
         createDefaultAdminIfNotExits();
     }
 
-    private void createDefaultUserIfNotExits(){
-        Optional<Role> userRoleOptional = roleRepository.findByName("ROLE_USER");
+    private void createDefaultStudentIfNotExits(){
+        Optional<Role> userRoleOptional = roleRepository.findByName("ROLE_STUDENT");
         if (userRoleOptional.isEmpty()) {
-            System.out.println("ROLE_USER not found");
+            System.out.println("ROLE_STUDENT not found");
             return;
         }
         Role userRole = userRoleOptional.get();
