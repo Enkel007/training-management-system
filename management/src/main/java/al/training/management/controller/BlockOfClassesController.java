@@ -7,6 +7,7 @@ import al.training.management.response.ApiResponse;
 import al.training.management.service.block.IBlockOfClassesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -49,6 +50,7 @@ public class BlockOfClassesController {
         }
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/add")
     public ResponseEntity<ApiResponse> addBlock(@RequestBody BlockOfClasses name) {
         try {
@@ -59,6 +61,7 @@ public class BlockOfClassesController {
         }
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/block/{id}/delete")
     public ResponseEntity<ApiResponse> deleteBlock(@PathVariable Long id){
         try {
@@ -69,6 +72,7 @@ public class BlockOfClassesController {
         }
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/block/{id}/update")
     public ResponseEntity<ApiResponse> updateBlock(@PathVariable Long id, @RequestBody BlockOfClasses block) {
         try {

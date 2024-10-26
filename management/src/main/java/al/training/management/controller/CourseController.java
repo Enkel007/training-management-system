@@ -10,6 +10,7 @@ import al.training.management.response.ApiResponse;
 import al.training.management.service.course.ICourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import static org.springframework.http.HttpStatus.*;
@@ -40,6 +41,7 @@ public class CourseController {
         }
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/add")
     public ResponseEntity<ApiResponse> addCourse(@RequestBody CreateCourseRequest course) {
         try {
@@ -51,6 +53,7 @@ public class CourseController {
         }
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/course/{courseId}/update")
     public  ResponseEntity<ApiResponse> updateCourse(@RequestBody UpdateCourseRequest request, @PathVariable Long courseId) {
         try {
@@ -62,6 +65,7 @@ public class CourseController {
         }
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/course/{courseId}/delete")
     public ResponseEntity<ApiResponse> deleteCourse(@PathVariable Long courseId) {
         try {

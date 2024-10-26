@@ -10,6 +10,7 @@ import al.training.management.response.ApiResponse;
 import al.training.management.service.klas.IKlasService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,7 +40,8 @@ public class KlasController {
             return ResponseEntity.status(NOT_FOUND).body(new ApiResponse("Class not found!", null));
         }
     }
-    
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/add")
     public ResponseEntity<ApiResponse> createClass(@RequestBody CreateClassRequest request) {
         try {
@@ -50,7 +52,8 @@ public class KlasController {
             return ResponseEntity.status(CONFLICT).body(new ApiResponse(e.getMessage(), null));
         }
     }
-    
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/{classId}/update")
     public ResponseEntity<ApiResponse> updateClass(@RequestBody UpdateClassRequest request, @PathVariable Long classId) {
         try {
@@ -61,7 +64,8 @@ public class KlasController {
             return ResponseEntity.status(NOT_FOUND).body(new ApiResponse("Class not found!", null));
         }
     }
-    
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/{classId}/delete")
     public ResponseEntity<ApiResponse> deleteClass(@PathVariable Long classId) {
         try {
